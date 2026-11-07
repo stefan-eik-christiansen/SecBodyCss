@@ -1,0 +1,12 @@
+
+{% block sw_cms_sidebar_page_settings_css_class_field %}
+    {% parent %}
+
+    <sw-text-field
+        :value="page.customFields?.kabsBodyClasses || ''"
+        label="CSS-Klassen body-Tag"
+        placeholder="nav-black landing-special"
+        help-text="Mehrere Klassen durch Leerzeichen trennen. Gilt für alle Seiten, die diese Erlebniswelt verwenden."
+        @update:value="onKabsBodyClassesChange"
+    />
+{% endblock %}

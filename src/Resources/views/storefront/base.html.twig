@@ -1,0 +1,16 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_body_classes %}
+    {{- parent() -}}
+
+    {%- set secCmsPage = page.cmsPage ?? page.landingPage.cmsPage ?? null -%}
+
+    {%- set secBodyClasses = secCmsPage
+        ? secCmsPage.translated.customFields.secBodyClasses|default('')|trim
+        : ''
+    -%}
+
+    {%- if secBodyClasses %}
+        {{- ' ' ~ (secBodyClasses|striptags|e('html')) -}}
+    {% endif -%}
+{% endblock %}
